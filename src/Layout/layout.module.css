@@ -1,0 +1,32 @@
+.header {
+    height: 80px;
+    color: #fff;
+    font-size: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+}
+
+a {
+    text-decoration: none;
+    color: #21207e;
+    margin: 0 20px;
+}
+
+a.active {
+    color: blueviolet;
+    text-decoration: underline;
+}
+
+.navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 60px;
+    justify-content: center;
+}
+
+.navbar a {
+    font-size: 2.2rem;
+}

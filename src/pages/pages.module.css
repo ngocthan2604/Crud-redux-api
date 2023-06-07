@@ -1,0 +1,177 @@
+.user {
+    display: flex;
+    justify-content: center;
+}
+
+.dark {
+    background-color: black;
+    color: #fff;
+}
+
+.light .btndarkmode {
+    color: #fff;
+    background-color: #e76c3b;
+}
+
+.dark .iconselect {
+    transform: translateX(-45px);
+}
+
+.btndarkmode {
+    top: 30px;
+    right: 70px;
+    width: 74px;
+    height: 30px;
+    color: #fff;
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 40px;
+    align-items: center;
+    background-color: #000;
+    justify-content: space-around;
+}
+
+.iconselect {
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 15px;
+    background-color: #fff;
+    transition: transform linear 0.2s;
+}
+
+.userlist {
+    width: 70%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+td:first-child {
+    padding-left: 0;
+    text-align: center;
+}
+
+.actionbtn {
+    cursor: pointer;
+    padding: 8px 12px;
+    margin-right: 20px;
+}
+
+.regisform {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    width: 100%;
+}
+
+form {
+    width: 50%;
+    padding: 2rem;
+    border-radius: 6px;
+    border: 2px double #ccc;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.inputname,
+.inputage,
+.inputdesc {
+    font-size: 1.8rem;
+    padding: 10px 8px;
+    margin-bottom: 16px;
+}
+
+.btncreate {
+    display: block;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 8px 16px;
+    margin: 50px auto;
+}
+/*css call api */
+.load {
+    top: 50%;
+    left: 50%;
+    color: #d7b7f5;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+.load svg {
+    font-size: 50px;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.err {
+    top: 50%;
+    left: 50%;
+    color: red;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+.err svg {
+    display: block;
+    font-size: 50px;
+    margin: 20px auto;
+}
+
+/* render data in file excel */
+.datafromfile {
+    min-height: 1000px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datafromfile input {
+    padding-left: 700px;
+}
+
+.btnsubmitdata {
+    margin: 30px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.6rem;
+    padding: 8px 16px;
+    border-radius: 10px;
+    background-color: #524cf7;
+    transition: all linear 0.4s;
+}
+
+.btnsubmitdata:hover {
+    color: #524cf7;
+    background-color: #fff;
+}
+
+.result {
+    border: 2px solid red;
+}
+
+.result th,
+.result td {
+    border: 1px solid red;
+}
