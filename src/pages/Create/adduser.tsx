@@ -1,6 +1,12 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import styles from '../pages.module.css';
 import * as ExcelJS from 'exceljs';
+import { useDispatch } from 'react-redux';
+import { createUserAction } from '../../redux/userSlice';
+import { ApiStatus, UserForm } from '../../redux/UserType';
+import { useAppSelector } from '../../redux/hook';
+import { RootState } from '../../redux/store';
+import { MdVerifiedUser } from 'react-icons/md';
 
 interface ExcelData {
     ID: number;
@@ -14,6 +20,13 @@ interface ExcelData {
 function AddUser() {
     const [file, setFile] = useState<File | undefined>(undefined);
     const [data, setData] = useState<ExcelData[]>([]);
+    const [name, setName] = useState('');
+    const [age, setAge] = useState(0);
+    const [description, setDescription] = useState('');
+    const [toastMessage, setToastMessage] = useState(false);
+
+    const dispatch = useDispatch();
+    const { createStatus } = useAppSelector((state: RootState) => state.user);
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const fileElement: File | undefined = e.target.files?.[0];
@@ -58,19 +71,66 @@ function AddUser() {
         }
     }
 
-    console.log(data);
+    function handleAddUser(event: React.MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        const formData: UserForm = {
+            name,
+            age,
+            description,
+        };
+        if (name !== '' && age !== 0 && description !== '') {
+            dispatch<any>(createUserAction(formData));
+            setName('');
+            setAge(0);
+            setDescription('');
+        } else if (age <= 0) {
+            alert('Please enter age > 0');
+        } else {
+            alert('Please fill the form');
+        }
+    }
+
+    useEffect(() => {
+        if (createStatus === ApiStatus.success) {
+            setToastMessage(true);
+            setTimeout(() => {
+                setToastMessage(false);
+            }, 4000);
+        }
+    }, [createStatus]);
 
     return (
         <>
             <div className={styles.regisform}>
                 <form action="">
                     <label htmlFor="name">Name :</label>
-                    <input id="name" className={styles.inputname} required />
+                    <input
+                        value={name}
+                        id="name"
+                        className={styles.inputname}
+                        required
+                        onChange={(e) => setName(e.target.value)}
+                    />
                     <label htmlFor="age"> Age :</label>
-                    <input id="age" className={styles.inputage} required />
+                    <input
+                        value={age}
+                        type="number"
+                        id="age"
+                        className={styles.inputage}
+                        required
+                        onChange={(e) => setAge(parseInt(e.target.value))}
+                    />
                     <label htmlFor="desc"> Description :</label>
-                    <input id="desc" className={styles.inputdesc} required />
-                    <button className={styles.btncreate}>Create</button>
+                    <input
+                        id="desc"
+                        value={description}
+                        className={styles.inputdesc}
+                        required
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <button className={styles.btncreate} onClick={handleAddUser}>
+                        Create
+                    </button>
                 </form>
             </div>
             <div className={styles.datafromfile}>
@@ -101,6 +161,12 @@ function AddUser() {
                     </table>
                 </div>
             </div>
+            {toastMessage && (
+                <div className={styles.toastMessage}>
+                    <MdVerifiedUser />
+                    <h3>User Created</h3>
+                </div>
+            )}
         </>
     );
 }

@@ -1,7 +1,7 @@
-const baseUrl = 'https://jsonplaceholder.typicode.com/';
+const baseUrl = 'http://localhost:8000/';
 
 const ApiConfig = {
-    user: `${baseUrl}users`,
+    user: `${baseUrl}students`,
 };
 
 export default ApiConfig;

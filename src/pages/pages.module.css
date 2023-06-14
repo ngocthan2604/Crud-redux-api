@@ -65,6 +65,71 @@ td:first-child {
     margin-right: 20px;
 }
 
+.actionbtn:last-child {
+    position: relative;
+}
+
+.formdelete {
+    right: 0;
+    z-index: 10;
+    padding: 12px;
+    min-width: 300px;
+    position: absolute;
+    border-radius: 8px;
+    top: calc(100% + 6px);
+    box-shadow: 0 0 10px;
+    background-color: #fff;
+    transform-origin: top right;
+    animation: scale linear 0.2s forwards;
+}
+
+.formdelete p {
+    display: flex;
+    color: #ff0000;
+    font-size: 1.6rem;
+    align-items: center;
+}
+
+.formdelete svg {
+    color: #ff0000;
+    font-size: 2rem;
+    margin-right: 8px;
+}
+
+.formdelete div {
+    display: flex;
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+
+.nodeletebtn,
+.yesdeletebtn {
+    width: 36px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+
+.yesdeletebtn {
+    color: #fff;
+    margin-left: 8px;
+    margin-right: 12px;
+    background-color: #103be8;
+}
+
+@keyframes scale {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .regisform {
     display: flex;
     justify-content: center;
@@ -148,7 +213,7 @@ label {
 }
 
 .datafromfile input {
-    padding-left: 700px;
+    width: auto;
 }
 
 .btnsubmitdata {
@@ -174,4 +239,121 @@ label {
 .result th,
 .result td {
     border: 1px solid red;
+}
+
+/* Overlay and user-detail */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    opacity: 0.2;
+    background-color: #000;
+    animation: overlay linear 0.4s;
+}
+
+@keyframes overlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.2;
+    }
+}
+
+.userdetail {
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    padding: 16px;
+    min-width: 360px;
+    position: absolute;
+    border-radius: 10px;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+}
+
+.userdetail h1 {
+    margin-bottom: 20px;
+}
+
+.userdetail p {
+    margin: 6px;
+    font-size: 1.8rem;
+}
+
+/* Toast Message */
+.toastMessage {
+    top: 100px;
+    right: 16px;
+    width: 320px;
+    height: 90px;
+    display: flex;
+    padding: 0 16px;
+    position: absolute;
+    align-items: center;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px #50e363;
+    animation: slideIn linear 0.6s, slideOut linear 0.8s 3.3s;
+}
+
+.toastMessage svg {
+    color: #43d934;
+    font-size: 3.6rem;
+}
+
+.toastMessage h3 {
+    margin-left: 12px;
+    font-size: 2.4rem;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(calc(100% + 16px));
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+/*  Edit form */
+.useredit {
+    left: 50%;
+    top: 50%;
+    border-radius: 8px;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 5px #ccc;
+    transform: translate(-50%, -50%);
+}
+
+.usereditform {
+}
+
+.editname {
+}
+
+.editage {
+}
+
+.editdesc {
+}
+
+.btnedit {
 }

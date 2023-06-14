@@ -1,8 +1,8 @@
 export interface IUser {
     id: number;
     name: string;
-    username: string;
-    email: string;
+    age: number;
+    description: string;
 }
 
 export enum ApiStatus {
@@ -14,5 +14,14 @@ export enum ApiStatus {
 
 export interface IUserState {
     list: IUser[];
+    deleteId: number;
     listStatus: ApiStatus;
+    createStatus: ApiStatus;
+    deleteStatus: ApiStatus;
+}
+
+export interface UserForm {
+    name: string;
+    age: number;
+    description: string;
 }
